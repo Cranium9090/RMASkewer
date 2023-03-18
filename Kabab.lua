@@ -62,50 +62,6 @@ Section:NewToggle("YIPEE", "Cranium#9090", function(state)
 game:GetService("ReplicatedStorage").CustomiseBooth:FireServer(unpack(args))
     end
 end)
-Section:NewToggle("WYSI", "Cranium#9090", function(state)
-    if state then
-    wysiCond = true
-	while wysiCond==true do
-		local wysiTab = {
-			"9835517592",
-			"9835517612",
-			"9835517613",
-			"9835517611",
-			"9835517628",
-			"9835517622",
-			"9835517619",
-			"9835517608",
-			"9835517602",
-			"9835517604",
-			"9835517591",
-			"9835517631",
-			"9835517590",
-			"9835517603",
-			"9835517605",
-
-		}
-		for _,v in pairs(wysiTab) do
-			local k={[1]="Update",[2]={["DescriptionText"]="wysi",["ImageId"]=v}}
-			game:GetService("ReplicatedStorage").CustomiseBooth:FireServer(unpack(k))
-			if wysiCond==false then
-				break
-			end
-			wait(.1)
-		end
-	end
-    else
-    wysiCond = false
-        local args = {
-    [1] = "Update",
-    [2] = {
-        ["DescriptionText"] = "Gifs by Cranium 9090",
-        ["ImageId"] = 0,
-    },
-}
-
-game:GetService("ReplicatedStorage").CustomiseBooth:FireServer(unpack(args))
-    end
-end)
 Section:NewToggle("Happy Cat", "Cranium#9090", function(state)
     if state then
     happyCatCond = true
@@ -191,7 +147,7 @@ spinningRatCond = true
         local args = {
     [1] = "Update",
     [2] = {
-        ["DescriptionText"] = "Booth Gifs by Cranium#9090",
+        ["DescriptionText"] = "Gifs by Cranium 9090",
         ["ImageId"] = 0,
     },
 }
@@ -234,7 +190,7 @@ capybaraCarCond = true
         local args = {
     [1] = "Update",
     [2] = {
-        ["DescriptionText"] = "Booth Gifs by Cranium#9090",
+        ["DescriptionText"] = "Gifs by Cranium 9090",
         ["ImageId"] = 0,
     },
 }
