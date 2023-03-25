@@ -438,65 +438,65 @@ pl.CFrame = game.Players[pl2].Character.HumanoidRootPart.CFrame
 end)
 
 local Section = Tab:NewSection("Locations")
-Section:NewButton("Shop", "TPS for shop", function()
+Section:NewButton("Shop", "Teleports you to the front of the shop", function()
     local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
 	local location = CFrame.new(-62, 3, 55)
 	local humanoid = game.Players.LocalPlayer.Character.Humanoid
 	task.wait()
 	pl.CFrame = location
 end)
-Section:NewButton("Spawn", "TPS to spawn", function()
+Section:NewButton("Spawn", "Teleports you to the middle of the spawnplate", function()
     local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
 	local location = CFrame.new(-8, 3, 6)
 	local humanoid = game.Players.LocalPlayer.Character.Humanoid
 	task.wait()
 	pl.CFrame = location
 end)
-Section:NewButton("Stage", "TPS to stage", function()
+Section:NewButton("Stage", "Teleports you to the middle of the stage", function()
     local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
 	local location = CFrame.new(-86, 7, 6)
 	local humanoid = game.Players.LocalPlayer.Character.Humanoid
 	task.wait()
 	pl.CFrame = location
 end)
-Section:NewButton("Top Rated Sign", "Tps on top of the Top rated sign", function()
+Section:NewButton("Top Rated Sign", "Teleports you on top of the top rated sign", function()
     local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
 	local location = CFrame.new(-71, 19, -40)
 	local humanoid = game.Players.LocalPlayer.Character.Humanoid
 	task.wait()
 	pl.CFrame = location
 end)
-Section:NewButton("Tree", "TPS to tree", function()
+Section:NewButton("Big Tree", "Teleports you on top of the big tree", function()
     local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
 	local location = CFrame.new(60, 37, -65)
 	local humanoid = game.Players.LocalPlayer.Character.Humanoid
 	task.wait()
 	pl.CFrame = location
 end)
-Section:NewButton("Other Tree", "TPS to the other tree", function()
+Section:NewButton("Small Tree", "Teleports you on top of the small tree", function()
     local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
 	local location = CFrame.new(56, 38, 72)
 	local humanoid = game.Players.LocalPlayer.Character.Humanoid
 	task.wait()
 	pl.CFrame = location
 end)
-Section:NewButton("Shop Sign", "TPS to the shop sign", function()
+Section:NewButton("Shop Flag", "Teleports you on top of the shop flag", function()
     local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
 	local location = CFrame.new(-76, 19, 50)
 	local humanoid = game.Players.LocalPlayer.Character.Humanoid
 	task.wait()
 	pl.CFrame = location
 end)
-Section:NewButton("Premium Lounge", "i like men", function()
+Section:NewButton("Premium Lounge", "Teleports you inside the premium lounge without needing 4 stars", function()
     local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
 	local location = CFrame.new(-5900, -54, 23)
 	local humanoid = game.Players.LocalPlayer.Character.Humanoid
 	task.wait()
 	pl.CFrame = location
 end)
-Section:NewButton("PC", "sex", function()
+Section:NewButton("Heaven", "Teleports you to heaven", function()
     local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-	local location = CFrame.new(-88, 3, 38)
+	local location = CFrame.new(-5900, 0, 23)
 	local humanoid = game.Players.LocalPlayer.Character.Humanoid
 	task.wait()
 	pl.CFrame = location
@@ -529,7 +529,6 @@ Section:NewToggle("ToggleText", "ToggleInfo", function(state)
     else
         print("Toggle Off")
     end
-end)
 local Tab = Window:NewTab("Image Sign")
 local Section = Tab:NewSection("Image Sign (GAMEPASS REQUIRED)")
 Section:NewButton("Get Image Sign", "gives u image sign", function()
@@ -548,7 +547,7 @@ Section:NewToggle("Loop give image sign", "loop gives image sign", function(stat
 		end
     else
 		cond = false
-		print("no more imaeg sign")
+		print("no more image sign")
     end
 end)
 local Section = Tab:NewSection("Animations (SOON)")
