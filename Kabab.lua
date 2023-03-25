@@ -529,6 +529,7 @@ Section:NewToggle("ToggleText", "ToggleInfo", function(state)
     else
         print("Toggle Off")
     end
+end)
 local Tab = Window:NewTab("Image Sign")
 local Section = Tab:NewSection("Image Sign (GAMEPASS REQUIRED)")
 Section:NewButton("Get Image Sign", "gives u image sign", function()
