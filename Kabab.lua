@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Rate my Avatar GUI | Cranium#9090", "Ocean")
+local Window = Library.CreateLib("Rate my Avatar GUI | Cranium#9090, cs#3322", "Ocean")
 
 local Tab = Window:NewTab("Booth")
 local Section = Tab:NewSection("Normal Stuff")
@@ -54,7 +54,7 @@ Section:NewToggle("YIPEE", "Cranium#9090", function(state)
         local args = {
     [1] = "Update",
     [2] = {
-        ["DescriptionText"] = "Gifs by Cranium 9090",
+        ["DescriptionText"] = "Gifs by Disrelic",
         ["ImageId"] = 0,
     },
 }
@@ -100,7 +100,7 @@ Section:NewToggle("Happy Cat", "Cranium#9090", function(state)
         local args = {
     [1] = "Update",
     [2] = {
-        ["DescriptionText"] = "Gifs by Cranium 9090",
+        ["DescriptionText"] = "Gifs by Disrelic",
         ["ImageId"] = 0,
     },
 }
@@ -147,7 +147,7 @@ spinningRatCond = true
         local args = {
     [1] = "Update",
     [2] = {
-        ["DescriptionText"] = "Gifs by Cranium 9090",
+        ["DescriptionText"] = "Gifs by Disrelic",
         ["ImageId"] = 0,
     },
 }
@@ -190,7 +190,7 @@ capybaraCarCond = true
         local args = {
     [1] = "Update",
     [2] = {
-        ["DescriptionText"] = "Gifs by Cranium 9090",
+        ["DescriptionText"] = "Gifs by Disrelic",
         ["ImageId"] = 0,
     },
 }
@@ -229,7 +229,7 @@ skullExplodeCond = true
         local args = {
     [1] = "Update",
     [2] = {
-        ["DescriptionText"] = "Gifs by Cranium 9090",
+        ["DescriptionText"] = "Gifs by Disrelic",
         ["ImageId"] = 0,
     },
 }
@@ -267,7 +267,7 @@ Section:NewToggle("Skull Impload", "Cranium#9090", function(state)
         local args = {
     [1] = "Update",
     [2] = {
-        ["DescriptionText"] = "Gifs by Cranium 9090",
+        ["DescriptionText"] = "Gifs by Disrelic",
         ["ImageId"] = 0,
     },
 }
@@ -310,7 +310,7 @@ Section:NewToggle("RIP Cat", "Cranium#9090", function(state)
         local args = {
     [1] = "Update",
     [2] = {
-        ["DescriptionText"] = "Gifs by Cranium 9090",
+        ["DescriptionText"] = "Gifs by Disrelic",
         ["ImageId"] = 0,
     },
 }
@@ -347,7 +347,7 @@ Section:NewToggle("Water Cat", "Cranium#9090", function(state)
         local args = {
     [1] = "Update",
     [2] = {
-        ["DescriptionText"] = "Gifs by Cranium 9090",
+        ["DescriptionText"] = "Gifs by Disrelic",
         ["ImageId"] = 0,
     },
 }
@@ -399,7 +399,7 @@ Section:NewToggle("Pug", "Cranium#9090", function(state)
         local args = {
     [1] = "Update",
     [2] = {
-        ["DescriptionText"] = "Gifs by Cranium 9090",
+        ["DescriptionText"] = "Gifs by Disrelic",
         ["ImageId"] = 0,
     },
 }
@@ -496,7 +496,7 @@ Section:NewButton("Premium Lounge", "Teleports you inside the premium lounge wit
 end)
 Section:NewButton("Heaven", "Teleports you to heaven", function()
     local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-	local location = CFrame.new(-5900, 0, 23)
+	local location = CFrame.new(-5900, -18, 23)
 	local humanoid = game.Players.LocalPlayer.Character.Humanoid
 	task.wait()
 	pl.CFrame = location
@@ -510,6 +510,7 @@ Section:NewButton("Get Text Sign", "gives u text sign", function()
 
 game:GetService("ReplicatedStorage").RequestGamepassTool:FireServer(unpack(args))
 end)
+
 Section:NewToggle("Loop give text sign", "loop gives text sign", function(state)
         if state then
 		cond = true
@@ -522,12 +523,92 @@ Section:NewToggle("Loop give text sign", "loop gives text sign", function(state)
 		print("no more text sign")
     end
 end)
+Section:NewTextBox("Change Text", "Changes the text of the sign", function(txt)
+local args = {
+    [1] = "Text",
+    [2] = txt
+}
+game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+end)
 local Section = Tab:NewSection("Animations (SOON)")
-Section:NewToggle("ToggleText", "ToggleInfo", function(state)
-    if state then
-        print("Toggle On")
+Section:NewToggle("Wiggle", "wiggles", function(state)
+	if state then
+		wigglecond = true
+	while wigglecond==true do
+		local args = {
+    			[1] = "Text",
+    			[2] = "("
+		}
+		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+		task.wait(.1)
+		local args = {
+    			[1] = "Text",
+    			[2] = "|"
+		}
+		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+		task.wait(.1)
+		local args = {
+    			[1] = "Text",
+    			[2] = ")"
+		}
+		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+		task.wait(.1)
+		local args = {
+    			[1] = "Text",
+    			[2] = "|"
+		}
+		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+		task.wait(.1)
+	end
     else
-        print("Toggle Off")
+		wigglecond = false
+		print("no more wiggle")
+		wait(.1)
+		local args = {
+		        [1] = "Text",
+		        [2] = ""
+		}
+		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+    end
+end)
+Section:NewToggle("Spin", "It spin", function(state)
+	if state then
+		wowcond = true
+	while wowcond==true do
+		local args = {
+    			[1] = "Text",
+    			[2] = "┴"
+		}
+		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+		task.wait(.3)
+		local args = {
+    			[1] = "Text",
+    			[2] = "├"
+    	}
+		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+		task.wait(.3)
+				local args = {
+    			[1] = "Text",
+    			[2] = "┬"
+    	}
+		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+		task.wait(.3)
+				local args = {
+    			[1] = "Text",
+    			[2] = "┤"
+    	}
+		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+		task.wait(.3)
+	end
+    else
+		wowcond = false
+		print("no more spin")
+		wait(.1)
+		local args = {
+		        [1] = "Text",
+		        [2] = ""
+		}
+		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
     end
 end)
 local Tab = Window:NewTab("Image Sign")
@@ -551,7 +632,7 @@ Section:NewToggle("Loop give image sign", "loop gives image sign", function(stat
 		print("no more image sign")
     end
 end)
-local Section = Tab:NewSection("Animations (SOON)")
+local Section = Tab:NewSection("Animations")
 Section:NewToggle("Spongebob Fish", "ok", function(state)
     if state then
         	Cond = true
