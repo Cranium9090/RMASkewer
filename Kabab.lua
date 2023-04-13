@@ -1,23 +1,14 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Rate my Avatar GUI | Cranium#9090, cs#3322", "Ocean")
+local Window = Library.CreateLib("Rate my Avatar GUI | Cranium#9090, disrelic#3322", "Ocean")
 
 local Tab = Window:NewTab("Booth")
 local Section = Tab:NewSection("Normal Stuff")
 Section:NewTextBox("Change Text", "Changes the text of the booth", function(txt)
-local args = {
-    [1] = "Update",
-    [2] = {
-        ["DescriptionText"] = txt,
-        ["ImageId"] = txt1,
-    },
-}
-game:GetService("ReplicatedStorage").CustomiseBooth:FireServer(unpack(args))
+local booth={[1]="Update",[2]={["DescriptionText"]=txt,["ImageID"]=txt1}}
+game.ReplicatedStorage.CustomiseBooth:FireServer(unpack(booth))
 end)
-Section:NewButton("Abandon Booth", "makes booth vanish", function()
-    local args = {
-    [1] = "Abandon",
-}
-game:GetService("ReplicatedStorage").CustomiseBooth:FireServer(unpack(args))
+Section:NewButton("Abandon Booth", "No more booth", function()
+game:GetService("ReplicatedStorage").CustomiseBooth:FireServer('Abandon')
 end)
 local Section = Tab:NewSection("Booth Gifs")
 Section:NewToggle("YIPEE", "Cranium#9090", function(state)
@@ -38,7 +29,6 @@ Section:NewToggle("YIPEE", "Cranium#9090", function(state)
 			"9834224386",
 			"9834224368",
 			"9834224407",
-
 		}
 		for _,v in pairs(yipeeTab) do
 			local k={[1]="Update",[2]={["DescriptionText"]="YIPEEE",["ImageId"]=v}}
@@ -504,11 +494,7 @@ end)
 local Tab = Window:NewTab("Text Sign")
 local Section = Tab:NewSection("Text Sign (GAMEPASS REQUIRED)")
 Section:NewButton("Get Text Sign", "gives u text sign", function()
-    local args = {
-    [1] = 17291420,
-}
-
-game:GetService("ReplicatedStorage").RequestGamepassTool:FireServer(unpack(args))
+game:GetService("ReplicatedStorage").RequestGamepassTool:FireServer(17291420)
 end)
 
 Section:NewToggle("Loop give text sign", "loop gives text sign", function(state)
@@ -524,101 +510,53 @@ Section:NewToggle("Loop give text sign", "loop gives text sign", function(state)
     end
 end)
 Section:NewTextBox("Change Text", "Changes the text of the sign", function(txt)
-local args = {
-    [1] = "Text",
-    [2] = txt
-}
-game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+game.ReplicatedStorage.UpdateSign:FireServer('Text',txt)
 end)
 local Section = Tab:NewSection("Animations (SOON)")
 Section:NewToggle("Wiggle", "wiggles", function(state)
 	if state then
 		wigglecond = true
 	while wigglecond==true do
-		local args = {
-    			[1] = "Text",
-    			[2] = "("
-		}
-		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+		game.ReplicatedStorage.UpdateSign:FireServer('Text',"(")
 		task.wait(.1)
-		local args = {
-    			[1] = "Text",
-    			[2] = "|"
-		}
-		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+        game.ReplicatedStorage.UpdateSign:FireServer('Text',"|")
 		task.wait(.1)
-		local args = {
-    			[1] = "Text",
-    			[2] = ")"
-		}
-		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+        game.ReplicatedStorage.UpdateSign:FireServer('Text',")")
 		task.wait(.1)
-		local args = {
-    			[1] = "Text",
-    			[2] = "|"
-		}
-		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+        game.ReplicatedStorage.UpdateSign:FireServer('Text',"|")
 		task.wait(.1)
 	end
     else
 		wigglecond = false
 		print("no more wiggle")
 		wait(.1)
-		local args = {
-		        [1] = "Text",
-		        [2] = ""
-		}
-		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+        game.ReplicatedStorage.UpdateSign:FireServer('Text',"")
     end
 end)
 Section:NewToggle("Spin", "It spin", function(state)
 	if state then
 		wowcond = true
 	while wowcond==true do
-		local args = {
-    			[1] = "Text",
-    			[2] = "┴"
-		}
-		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+        game.ReplicatedStorage.UpdateSign:FireServer('Text',"┴")
 		task.wait(.3)
-		local args = {
-    			[1] = "Text",
-    			[2] = "├"
-    	}
-		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+        game.ReplicatedStorage.UpdateSign:FireServer('Text',"├")
 		task.wait(.3)
-				local args = {
-    			[1] = "Text",
-    			[2] = "┬"
-    	}
-		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+        game.ReplicatedStorage.UpdateSign:FireServer('Text',"┬")
 		task.wait(.3)
-				local args = {
-    			[1] = "Text",
-    			[2] = "┤"
-    	}
-		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+        game.ReplicatedStorage.UpdateSign:FireServer('Text',"┤")
 		task.wait(.3)
 	end
     else
 		wowcond = false
 		print("no more spin")
 		wait(.1)
-		local args = {
-		        [1] = "Text",
-		        [2] = ""
-		}
-		game:GetService("ReplicatedStorage"):WaitForChild("UpdateSign"):FireServer(unpack(args))
+		game.ReplicatedStorage.UpdateSign:FireServer('Text',"")
     end
 end)
 local Tab = Window:NewTab("Image Sign")
 local Section = Tab:NewSection("Image Sign (GAMEPASS REQUIRED)")
 Section:NewButton("Get Image Sign", "gives u image sign", function()
-    local args = {
-    [1] = 17291427,
-}
-
-game:GetService("ReplicatedStorage").RequestGamepassTool:FireServer(unpack(args))
+game:GetService("ReplicatedStorage").RequestGamepassTool:FireServer(17291427)
 end)
 Section:NewToggle("Loop give image sign", "loop gives image sign", function(state)
     if state then
@@ -837,7 +775,7 @@ end
 		end
     else
 		cond = false
-		print("no more sword")
+		print("no more knight")
     end
 end)
 local Tab = Window:NewTab("Other Scripts")
@@ -859,26 +797,35 @@ Section:NewButton("Fates Admin", "penis", function()
 end)
 local Tab = Window:NewTab("Rate")
 local Section = Tab:NewSection("Soon!")
+Section:NewTextBox("rate 5 star", "rates", function(DisplayName)
+for _,x in next,Players:GetPlayers()do
+    if x.DisplayName==DisplayName then
+        local args = {
+            [1] = game:GetService("Players"):WaitForChild(Displayname),
+            [2] = 5
+        }
+        game.ReplicatedStorage.PostRating:FireServer(unpack(args))
+        end
+    end
+end)
 local Tab = Window:NewTab("Blacklist")
 local Section = Tab:NewSection("Soon!")
+Section:NewTextBox("Blacklist player", "blacklists someone (cannot be display name)", function(person)
+    game.ReplicatedStorage.CustomiseBooth:FireServer('AddBlacklist',person)
+end)
+Section:NewTextBox("Unblacklist player", "unblacklists someone (cannot be display name)", function(unperson)
+    game.ReplicatedStorage.CustomiseBooth:FireServer('RemoveBlacklist',person)
+end)
 Section:NewButton("Blacklist all", "blacklists all", function()
 for i,v in pairs(game.Players:GetPlayers()) do
     wait(.3)
-    local args = {
-        [1] = "AddBlacklist",
-        [2] = v.Name
-    }
-    game:GetService("ReplicatedStorage").CustomiseBooth:FireServer(unpack(args))
+    game.ReplicatedStorage.CustomiseBooth:FireServer('AddBlacklist',v.Name)
 end
 end)
-Section:NewButton("unbaclklist all", "unblckalists all", function()
+Section:NewButton("unblacklist all", "unblacklists all", function()
 for i,v in pairs(game.Players:GetPlayers()) do
     wait(.3)
-    local args = {
-        [1] = "RemoveBlacklist",
-        [2] = v.Name
-    }
-    game:GetService("ReplicatedStorage").CustomiseBooth:FireServer(unpack(args))
+    game.ReplicatedStorage.CustomiseBooth:FireServer('RemoveBlacklist',v.Name)
 end
 end)
 Section:NewToggle("anti blacklist", "ur immune to blacklist", function(state)
