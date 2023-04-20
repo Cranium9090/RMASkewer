@@ -795,18 +795,32 @@ end)
 Section:NewButton("Fates Admin", "penis", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua", true))()
 end)
-local Tab = Window:NewTab("Rate")
-local Section = Tab:NewSection("Soon!")
-Section:NewTextBox("rate 5 star", "rates", function(DisplayName)
-for _,x in next,Players:GetPlayers()do
-    if x.DisplayName==DisplayName then
-        local args = {
-            [1] = game:GetService("Players"):WaitForChild(Displayname),
-            [2] = 5
-        }
-        game.ReplicatedStorage.PostRating:FireServer(unpack(args))
-        end
+local Tab = Window:NewTab("Rates")
+local Section = Tab:NewSection("Rates")
+Section:NewToggle("Rate All 1.000133769420666 Stars", "YEP", function()
+    local blacklist={
+        game:GetService("Players").LocalPlayer.Name
+    }
+    local funny=1.000133769420666
+    for _,x in next,game.Players:GetPlayers() do
+        if table.find(blacklist,x.Name)then continue end
+    game.ReplicatedStorage.PostRating:FireServer(x,funny)
     end
+end)
+Section:NewTextBox("Rate 5 Star", "rates", function(name5)
+game.ReplicatedStorage.PostRating:FireServer(name5,5)
+end)
+Section:NewTextBox("Rate 4 Star", "rates", function(name4)
+game.ReplicatedStorage.PostRating:FireServer(name4,4)
+end)
+Section:NewTextBox("Rate 3 Star", "rates", function(name3)
+game.ReplicatedStorage.PostRating:FireServer(name3,3)
+end)
+Section:NewTextBox("Rate 2 Star", "rates", function(name2)
+game.ReplicatedStorage.PostRating:FireServer(name2,2)
+end)
+Section:NewTextBox("Rate 1 Star", "rates", function(name1)
+game.ReplicatedStorage.PostRating:FireServer(name1,1)
 end)
 local Tab = Window:NewTab("Blacklist")
 local Section = Tab:NewSection("Soon!")
@@ -844,6 +858,9 @@ Section:NewToggle("anti blacklist", "ur immune to blacklist", function(state)
 end)
 local Tab = Window:NewTab("Others")
 local Section = Tab:NewSection("idfk what to put here")
+Section:NewButton("sit", yeah, function()
+game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Sit = true
+end)
 Section:NewButton("Rejoin", "rejoins same server", function()
     local ts = game:GetService("TeleportService")
 	local p = game:GetService("Players").LocalPlayer
