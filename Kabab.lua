@@ -8,7 +8,7 @@ local booth={[1]="Update",[2]={["DescriptionText"]=txt,["ImageID"]=txt1}}
 game.ReplicatedStorage.CustomiseBooth:FireServer(unpack(booth))
 end)
 Section:NewButton("Abandon Booth", "No more booth", function()
-game:GetService("ReplicatedStorage").CustomiseBooth:FireServer('Abandon')
+game.ReplicatedStorage.CustomiseBooth:FireServer('Abandon')
 end)
 local Section = Tab:NewSection("Booth Gifs")
 Section:NewToggle("YIPEE", "Cranium#9090", function(state)
@@ -452,6 +452,7 @@ end)
 Section:NewButton("Top Rated Sign", "Teleports you on top of the top rated sign", function()
     local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
 	local location = CFrame.new(-71, 19, -40)
+	
 	local humanoid = game.Players.LocalPlayer.Character.Humanoid
 	task.wait()
 	pl.CFrame = location
@@ -491,12 +492,11 @@ Section:NewButton("Heaven", "Teleports you to heaven", function()
 	task.wait()
 	pl.CFrame = location
 end)
-local Tab = Window:NewTab("Text Sign")
-local Section = Tab:NewSection("Text Sign (GAMEPASS REQUIRED)")
+local Tab = Window:NewTab("Signs")
+local Section = Tab:NewSection("Text Sign (REQUIRES GAMEPASS)")
 Section:NewButton("Get Text Sign", "gives u text sign", function()
 game:GetService("ReplicatedStorage").RequestGamepassTool:FireServer(17291420)
 end)
-
 Section:NewToggle("Loop give text sign", "loop gives text sign", function(state)
         if state then
 		cond = true
@@ -512,7 +512,7 @@ end)
 Section:NewTextBox("Change Text", "Changes the text of the sign", function(txt)
 game.ReplicatedStorage.UpdateSign:FireServer('Text',txt)
 end)
-local Section = Tab:NewSection("Animations (SOON)")
+local Section = Tab:NewSection("Text Sign Animations (unfinished)")
 Section:NewToggle("Wiggle", "wiggles", function(state)
 	if state then
 		wigglecond = true
@@ -533,28 +533,7 @@ Section:NewToggle("Wiggle", "wiggles", function(state)
         game.ReplicatedStorage.UpdateSign:FireServer('Text',"")
     end
 end)
-Section:NewToggle("Spin", "It spin", function(state)
-	if state then
-		wowcond = true
-	while wowcond==true do
-        game.ReplicatedStorage.UpdateSign:FireServer('Text',"┴")
-		task.wait(.3)
-        game.ReplicatedStorage.UpdateSign:FireServer('Text',"├")
-		task.wait(.3)
-        game.ReplicatedStorage.UpdateSign:FireServer('Text',"┬")
-		task.wait(.3)
-        game.ReplicatedStorage.UpdateSign:FireServer('Text',"┤")
-		task.wait(.3)
-	end
-    else
-		wowcond = false
-		print("no more spin")
-		wait(.1)
-		game.ReplicatedStorage.UpdateSign:FireServer('Text',"")
-    end
-end)
-local Tab = Window:NewTab("Image Sign")
-local Section = Tab:NewSection("Image Sign (GAMEPASS REQUIRED)")
+local Section = Tab:NewSection("Image Sign (REQUIRES GAMEPASS)")
 Section:NewButton("Get Image Sign", "gives u image sign", function()
 game:GetService("ReplicatedStorage").RequestGamepassTool:FireServer(17291427)
 end)
@@ -570,7 +549,7 @@ Section:NewToggle("Loop give image sign", "loop gives image sign", function(stat
 		print("no more image sign")
     end
 end)
-local Section = Tab:NewSection("Animations")
+local Section = Tab:NewSection("Image Sign Animations")
 Section:NewToggle("Spongebob Fish", "ok", function(state)
     if state then
         	Cond = true
@@ -735,22 +714,34 @@ Section:NewToggle("skeleton running", "ok", function(state)
 		game:GetService("ReplicatedStorage").UpdateSign:FireServer('Decal','')
     end
 end)
+local Section = Tab:NewSection("Stop Sign (REQUIRES GAMEPASS)")
+Section:NewButton("Get Stop Sign", "gives u stop sign", function()
+game:GetService("ReplicatedStorage").RequestGamepassTool:FireServer(17290248)
+end)
+Section:NewToggle("Loop Give Stop Sign", "loop gives stop sign", function(state)
+    if state then
+		cond = true
+        while cond==true do
+			game:GetService("ReplicatedStorage").RequestGamepassTool:FireServer(17290248)
+			wait(.7)
+		end
+    else
+		cond = false
+		print("no more stop sign")
+    end
+end)
 local Tab = Window:NewTab("Knight")
 local Section = Tab:NewSection("Knight")
 Section:NewButton("Get Knight", "get knight lmfoaoaoaa", function()
 local hrp = game.Players.LocalPlayer.Character.HumanoidRootPart
 local gobackto = hrp.CFrame
 local target = game:GetService("Workspace").JewelleryStand
-
 if target.Transparency ~= 1 then
-
 hrp.CFrame = CFrame.new(target.Position)
 wait(0.4)
 fireproximityprompt(target.ProximityPrompt)
 wait()
-
 hrp.CFrame = gobackto 
-
 end
 end)
 Section:NewToggle("auto claim knight", "claims knight when availabale", function(state)
@@ -807,29 +798,48 @@ Section:NewToggle("Rate All 1.000133769420666 Stars", "YEP", function()
     game.ReplicatedStorage.PostRating:FireServer(x,funny)
     end
 end)
-Section:NewTextBox("Rate 5 Star", "rates", function(name5)
-game.ReplicatedStorage.PostRating:FireServer(name5,5)
+Section:NewToggle("Rate All 2 Stars", "YEP", function()
+    local blacklist={
+        game:GetService("Players").LocalPlayer.Name
+    }
+    local funny2=2
+    for _,x in next,game.Players:GetPlayers() do
+        if table.find(blacklist,x.Name)then continue end
+    game.ReplicatedStorage.PostRating:FireServer(x,funny2)
+    end
 end)
-Section:NewTextBox("Rate 4 Star", "rates", function(name4)
-game.ReplicatedStorage.PostRating:FireServer(name4,4)
+Section:NewToggle("Rate All 3 Stars", "YEP", function()
+    local blacklist={
+        game:GetService("Players").LocalPlayer.Name
+    }
+    local funny3=3
+    for _,x in next,game.Players:GetPlayers() do
+        if table.find(blacklist,x.Name)then continue end
+    game.ReplicatedStorage.PostRating:FireServer(x,funny3)
+    end
 end)
-Section:NewTextBox("Rate 3 Star", "rates", function(name3)
-game.ReplicatedStorage.PostRating:FireServer(name3,3)
+Section:NewToggle("Rate All 4 Stars", "YEP", function()
+    local blacklist={
+        game:GetService("Players").LocalPlayer.Name
+    }
+    local funny4=4
+    for _,x in next,game.Players:GetPlayers() do
+        if table.find(blacklist,x.Name)then continue end
+    game.ReplicatedStorage.PostRating:FireServer(x,funny4)
+    end
 end)
-Section:NewTextBox("Rate 2 Star", "rates", function(name2)
-game.ReplicatedStorage.PostRating:FireServer(name2,2)
-end)
-Section:NewTextBox("Rate 1 Star", "rates", function(name1)
-game.ReplicatedStorage.PostRating:FireServer(name1,1)
+Section:NewToggle("Rate All 5 Stars", "YEP", function()
+    local blacklist={
+        game:GetService("Players").LocalPlayer.Name
+    }
+    local funny5=5
+    for _,x in next,game.Players:GetPlayers() do
+        if table.find(blacklist,x.Name)then continue end
+    game.ReplicatedStorage.PostRating:FireServer(x,funny5)
+    end
 end)
 local Tab = Window:NewTab("Blacklist")
 local Section = Tab:NewSection("Soon!")
-Section:NewTextBox("Blacklist player", "blacklists someone (cannot be display name)", function(person)
-    game.ReplicatedStorage.CustomiseBooth:FireServer('AddBlacklist',person)
-end)
-Section:NewTextBox("Unblacklist player", "unblacklists someone (cannot be display name)", function(unperson)
-    game.ReplicatedStorage.CustomiseBooth:FireServer('RemoveBlacklist',person)
-end)
 Section:NewButton("Blacklist all", "blacklists all", function()
 for i,v in pairs(game.Players:GetPlayers()) do
     wait(.3)
@@ -842,8 +852,10 @@ for i,v in pairs(game.Players:GetPlayers()) do
     game.ReplicatedStorage.CustomiseBooth:FireServer('RemoveBlacklist',v.Name)
 end
 end)
-Section:NewToggle("anti blacklist", "ur immune to blacklist", function(state)
+Section:NewToggle("anti blacklist (kinda laggy", "ur immune to blacklist", function(state)
     if state then
+        antiblacklist = true
+    while antiblacklist==true do
         for i,x in pairs(game.Players:GetPlayers()) do
             for i,v in pairs(game.Workspace:GetChildren()) do
             if v.Name == "BarrierFor"..x.Name then
@@ -851,13 +863,15 @@ Section:NewToggle("anti blacklist", "ur immune to blacklist", function(state)
                 end
             end
         end
-        wait()
+        task.wait(.5)
+    end
     else
+        antiblacklist = false
         print("no more anti blacklist")
     end
 end)
-local Tab = Window:NewTab("Others")
-local Section = Tab:NewSection("idfk what to put here")
+local Tab = Window:NewTab("Misc")
+local Section = Tab:NewSection("other stuff")
 Section:NewButton("sit", yeah, function()
 game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Sit = true
 end)
