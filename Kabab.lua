@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Rate my Avatar GUI | Cranium#9090, disrelic#3322", "Sentinel")
+local Window = Library.CreateLib("Rate my Avatar GUI | cranium9090, disrelic", "Sentinel")
 
 local Tab = Window:NewTab("Booth")
 local Section = Tab:NewSection("Normal Stuff")
@@ -493,6 +493,21 @@ Section:NewButton("Heaven", "Teleports you to heaven", function()
 	pl.CFrame = location
 end)
 local Tab = Window:NewTab("Signs")
+local Section = Tab:NewSection("All Sign")
+Section:NewToggle("Loop Give All Signs", "loop gives every sign", function(state)
+    if state then
+		cond = true
+        while cond==true do
+			game:GetService("ReplicatedStorage").RequestGamepassTool:FireServer(17290248)
+			game:GetService("ReplicatedStorage").RequestGamepassTool:FireServer(17291420)
+			game:GetService("ReplicatedStorage").RequestGamepassTool:FireServer(17291427)
+			wait(.7)
+		end
+    else
+		cond = false
+		print("no more stop sign")
+    end
+end)
 local Section = Tab:NewSection("Text Sign (REQUIRES GAMEPASS)")
 Section:NewButton("Get Text Sign", "gives u text sign", function()
 game:GetService("ReplicatedStorage").RequestGamepassTool:FireServer(17291420)
@@ -511,27 +526,6 @@ Section:NewToggle("Loop give text sign", "loop gives text sign", function(state)
 end)
 Section:NewTextBox("Change Text", "Changes the text of the sign", function(txt)
 game.ReplicatedStorage.UpdateSign:FireServer('Text',txt)
-end)
-local Section = Tab:NewSection("Text Sign Animations (unfinished)")
-Section:NewToggle("Wiggle", "wiggles", function(state)
-	if state then
-		wigglecond = true
-	while wigglecond==true do
-		game.ReplicatedStorage.UpdateSign:FireServer('Text',"(")
-		task.wait(.1)
-        game.ReplicatedStorage.UpdateSign:FireServer('Text',"|")
-		task.wait(.1)
-        game.ReplicatedStorage.UpdateSign:FireServer('Text',")")
-		task.wait(.1)
-        game.ReplicatedStorage.UpdateSign:FireServer('Text',"|")
-		task.wait(.1)
-	end
-    else
-		wigglecond = false
-		print("no more wiggle")
-		wait(.1)
-        game.ReplicatedStorage.UpdateSign:FireServer('Text',"")
-    end
 end)
 local Section = Tab:NewSection("Image Sign (REQUIRES GAMEPASS)")
 Section:NewButton("Get Image Sign", "gives u image sign", function()
@@ -771,14 +765,11 @@ end
 end)
 local Tab = Window:NewTab("Other Scripts")
 local Section = Tab:NewSection("Scripts:")
-Section:NewButton("Simple Spy v0.8", "penis", function()
-    loadstring(game:HttpGet("https://pastebin.com/raw/GE6Yii93", true))()
+Section:NewButton("Simple Spy v3", "penis", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/SimpleSpyV3/main.lua"))()
 end)
 Section:NewButton("CMD X", "penis", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/CMD-X/CMD-X/master/Source", true))()
-end)
-Section:NewButton("Domain X", "penis", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/DomainX/main/source",true))()
 end)
 Section:NewButton("Infinite Yield", "penis", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
@@ -880,10 +871,16 @@ Section:NewButton("Rejoin", "rejoins same server", function()
 	local p = game:GetService("Players").LocalPlayer
 	ts:Teleport(game.PlaceId, p)
 end)
-Section:NewButton("Server Hop", "joins diffrent server", function()
+Section:NewButton("Server Hop", "joins different server", function()
     local module = loadstring(game:HttpGet"https://raw.githubusercontent.com/LeoKholYt/roblox/main/lk_serverhop.lua")()
 	module:Teleport(game.PlaceId)
 end)
 Section:NewKeybind("Open/Close GUI", "sex", Enum.KeyCode.G, function()
 	Library:ToggleUI()
+end)
+Section:NewButton("Respawn", "sex", function()
+local gobackto=game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+game.ReplicatedStorage.RequestRespawn:FireServer()
+wait(.5)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=gobackto
 end)
