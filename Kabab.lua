@@ -397,26 +397,6 @@ Section:NewToggle("Pug", "Cranium#9090", function(state)
 game:GetService("ReplicatedStorage").CustomiseBooth:FireServer(unpack(args))
     end
 end)
-local Section = Tab:NewSection("Booth Sniper")
-Section:NewButton("Booth Sniper", "Snipes booths, what do I say?", function()
-    repeat
-        wait()
-        for i, v in pairs(game.Workspace:GetDescendants()) do
-            if v.Name == "Booth" then
-                val = v.Name
-                if string.find(v:FindFirstChild("Banner").SurfaceGui.Frame.Description.Text, "rent") then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Banner.CFrame
-                    fireclickdetector(v.Banner.ClickDetector)
-                end
-            end
-        end
-    until game:GetService("Players").LocalPlayer.PlayerGui.MainGui.NotificationFrame.Visible == true and
-        string.find(
-            game:GetService("Players").LocalPlayer.PlayerGui.MainGui.NotificationFrame.NotificationText.Text,
-            not game.Players.LocalPlayer.Name
-        ) or
-        game:GetService("Players").LocalPlayer.PlayerGui.MainGui.BoothCustomisationFrame.Visible == true
-end)
 local Tab = Window:NewTab("Teleports")
 local Section = Tab:NewSection("PLayer Teleports")
 Section:NewTextBox("Player Name", "TextboxInfo", function(txt)
